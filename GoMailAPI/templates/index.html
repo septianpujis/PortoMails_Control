@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>User info</title>
+</head>
+
+<body>
+    <h1>JSON</h1>
+
+    {{range .MailStruct}} 
+    {{.ID}}<br>
+    {{.Email}}<br>
+    {{.Name}}<br>
+    {{.Subject}}<br>
+    {{.Message}}<br><br>
+    <a href="/editForm?id={{.ID}}">Edit</a>
+    <form action="/deleteAction" method="post">
+        <input type="number" name="Id" id="Id" hidden value="{{.ID}}">
+        <button type="submit">Delete</button>
+    </form>
+    <hr>
+    <br />
+    
+    {{end}}
+
+</body>
+
+</html>

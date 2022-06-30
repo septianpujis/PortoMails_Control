@@ -1,0 +1,71 @@
+{{define "form"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{if eq .PortofolioMail.ID 0}}
+    <meta http-equiv="refresh" content="0; url=newForm">
+    {{end}}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    <form id="contact" action="/submitForm" method="post">
+        <input type="number" name="id" id="id" value="{{.PortofolioMail.ID}}" hidden>
+        <div class="row">
+            <div class="col-md-6">
+                <fieldset>
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required=""
+                        maxlength="50" value="{{.PortofolioMail.Name}}"/>
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset>
+                    <input name="email" type="email" class="form-control" id="email" placeholder="Your email..."
+                        required="" maxlength="250" value="{{.PortofolioMail.Email}}"/>
+                </fieldset>
+            </div>
+            <div class="col-md-12">
+                <fieldset>
+                    <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..."
+                        required="" maxlength="500" value="{{.PortofolioMail.Subject}}"/>
+                </fieldset>
+            </div>
+            <div class="col-md-12">
+                <fieldset>
+                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..."
+                        required="" maxlength="5000">{{.PortofolioMail.Message}}</textarea>
+                </fieldset>
+            </div>
+            <div class="col-md-12">
+                <fieldset>
+                    <button type="submit" id="form-submit" class="button">
+                        SUBMIT
+                    </button>
+                </fieldset>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
+
+{{end}}
+
+{{define "result"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <h1>{{.errmsg}}</h1>
+</body>
+</html>
+{{end}}
